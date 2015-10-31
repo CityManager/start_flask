@@ -1,0 +1,11 @@
+{% macro li_content(comment) %}
+    <li>{{ comment }}</li>
+{% endmacro %}
+
+{% macro li_with_context() %}
+    <ur>
+    {% for comment in comments %}
+        <li>{{ comment }}</li>
+    {% endfor %}
+    </ur>
+{% endmacro %}

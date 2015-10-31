@@ -1,0 +1,44 @@
+{% extends 'bootstrap_base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block jumbotron %}
+    <div>
+    {{ wtf.quick_form(form, button_map={'submit':'primary'}) }}
+    </div>
+{% endblock %}
+
+{% block main_container %}
+    {{ super() }}
+    {% for msg in get_flashed_messages() %}
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ msg }}
+    </div>
+    {% endfor %}
+    <div class="page-header">
+        <h1>留言板</h1>
+    </div>
+    {% for message in pages.items %}
+        <div class="panel panel-info">
+            <div class="panel-heading">{{ message.subject }},{{ moment(message.create_time).fromNow() }}</div>
+            <div class="panel-body">
+                {{ message.message }}
+            </div>
+        </div>
+    {% endfor %}
+    <nav>
+        <ul class="pager">
+        {% if pages.has_prev %}
+            <li class="previous"><a href="{{ url_for('.index', page=pages.prev_num) }}"><span aria-hidden="true">&larr;</span> Older</a></li>
+        {% endif %}
+        {% if pages.has_next %}
+            <li class="next"><a href="{{ url_for('.index', page=pages.next_num)}}">Newer <span aria-hidden="true">&rarr;</span></a></li>
+        {% endif %}
+        </ul>
+    </nav>
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,8 @@
+{% if members %}
+    {% for member in members %}
+        Member: <br/>
+            name:{{ member.name }}<br/>
+            email:{{ member.email }}<br/>
+            phone number:{{ member.phone }}<br/>
+    {% endfor %}
+{% endif %}

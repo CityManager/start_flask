@@ -1,0 +1,3 @@
+{% if username %}
+    欢迎您：{{ username }}
+{% endif %}

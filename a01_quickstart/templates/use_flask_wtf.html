@@ -1,0 +1,20 @@
+{% extends 'bootstrap_base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}  <!-- flask-bootstrap 与 flask-wtf相结合使用 -->
+
+
+{% block content %}  <!-- block 可以包含子block -->
+    <div class="container">
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% block page_content %}
+        <div class="page-header">
+            <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}</h1>
+        </div>
+        {{ wtf.quick_form(form) }}  <!-- 将flask-wtf的form对象传给flask-bootstrap定义的宏 -->
+    {% endblock %}
+    </div>
+{% endblock %}

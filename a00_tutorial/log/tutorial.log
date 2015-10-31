@@ -1,0 +1,17 @@
+2015-09-29 15:02:36,546 ERROR: Exception on /add [POST] [in D:\Program Files\Python35\lib\site-packages\flask\app.py:1423]
+Traceback (most recent call last):
+  File "D:\Program Files\Python35\lib\site-packages\flask\app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Program Files\Python35\lib\site-packages\flask\app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Program Files\Python35\lib\site-packages\flask\app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\Program Files\Python35\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "D:\Program Files\Python35\lib\site-packages\flask\app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Program Files\Python35\lib\site-packages\flask\app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/pyspace/pyCharm/start_flask/tutorial/tutorial.py", line 55, in add_entry
+    g.db.execute("insert into entries (title, article) values (?, ?, ?)", [request.form['title'], request.form['article']])
+sqlite3.OperationalError: 3 values for 2 columns

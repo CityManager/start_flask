@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% import 'micros.html' as micros %}
+{% from 'micros.html' import li_with_context %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <ur>
+    {% if comments %}
+        {% for comment in comments %}
+            {{ micros.li_content(comment) }}
+        {% endfor %}
+    {% else %}
+        {{ micros.li_content('这个是include的内容') }}
+    {% endif %}
+    </ur>
+
+    {{ li_with_context() }}
+</body>
+</html>
